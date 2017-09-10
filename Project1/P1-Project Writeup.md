@@ -17,7 +17,7 @@ Step 1. Convert image to gray scale
 
 <img src="./writeup_images/1_gray_solidWhiteCurve.jpg" width=300>
 
-Step 2. Apply guassian smoothing to mitigate artifacts due to noise in the image.
+Step 2. Apply Gaussian smoothing to mitigate artifacts due to noise in the image.
 
 <img src="./writeup_images/2_blur_solidWhiteCurve.jpg" width=300>
 
@@ -35,10 +35,10 @@ Step 5. Detect lines using the **Hough Transform** algorithm.
 
 Step 6. Create full lines by interpolating the output from the Hough Transform step.
 
-To do this, the `draw_lines()` function was modified to detemine each side of the lane by calculating the slope of the lines. A positive slope indicates 
+To do this, the `draw_lines()` function was modified to determine each side of the lane by calculating the slope of the lines. A positive slope indicates 
 the left lane line and a negative slope indicates the right lane line.
 
-A least squares fit is then calulated to create a single best fit line for each of the right and left lines.
+A least squares fit is then calculated  to create a single best fit line for each of the right and left lines.
 
 <img src="./writeup_images/6_interpolated_line_solidWhiteCurve.jpg" width=300>
 
