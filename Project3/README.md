@@ -66,7 +66,7 @@ The model used for this project comprises
 |Convolutional| Depth = 64, filter = 3 x 3, stride = 1 |
 |Dropout layer| 0.2|
 |Convolutional| Depth = 64, filter = 3 x 3, stride = 1 |
-|Max pooling layer| 0.2|
+|Max pooling layer| |
 |Dropout layer| 0.2|
 |Flatten|to 1162 Neurons |
 |Fully Connected | 100 Neurons |
