@@ -10,14 +10,16 @@ The objective of this project was to use deep learning to clone driving behavior
 
 The first stage of the project involved collecting data that would be used to train a neural network. 
 
-A driving simulator was provided where a simulated car was able to drive  around a test track. In training mode, an image was recorded from 3 positions at the front of the car (left, center and right) in addition to steering, throttle, brake and speed data as the simulated car traversed around a test track.
+A driving simulator was provided where a simulated car was able to drive around a test track. In training mode, an image was recorded from 3 positions at the front of the car (left, center and right) in addition to steering, throttle, brake and speed data as the simulated car traversed around a test track. The steering data was the variable that needed to be predicted when running in autonomous mode. 
 
-For this project, I used only the center images like those shown here.
+Examples of these collected images are shown here. 
 
 ![sample images](writeup_images/center_2016_12_01_13_34_44_228.jpg)
 ![sample images](writeup_images/center_2016_12_01_13_43_32_168.jpg)
+![sample images](writeup_images/left_2016_12_01_13_43_44_755.jpg)
+![sample images](writeup_images/right_2016_12_01_13_34_16_158.jpg)
 
-Also collected was the steering data. The steering data was the variable that needed to be predicted when running in autonomous mode. 
+Center, left and right position images were used to create the model. 
 
 I created my own data set using the simulator to drive around the course a number of times.
 
@@ -27,7 +29,15 @@ I also generated some "recovery data" by positioning the car at the edge of the 
 
 However, with this data I found that the car would not traverse the track completely in autonomous mode. 
 
-To double check my models, I downloaded the Udacity supplied data and was able to complete a circuit of the test track. So this data was used for the final test. The supplied data was augmented with the images flipped horizontally. 
+To double check my models, I downloaded the Udacity supplied data and was able to complete a circuit of the test track. So this data was used for the final test. 
+
+#### Data Processing
+
+Each image was converted to RGB to match the color space used by the drive.py script.
+
+The training track has a significant left turn bias so to counteract that bias the data set was augmented with images flipped 180 degrees along with the corresponding negative steering angle. 
+
+To increase the quantity of data for recovery from being off-center, the left and right images were used. For each of these images, the steering angle was adjusted plus or minus 0.25. This value was chosen arbitrarily but it appeared to work well during the testing phase. 
 
 ### Model Architecture
 
@@ -94,11 +104,11 @@ During testing of the model, I did run into a problem where the error CUDNN_STAT
 
 During training, the data was shuffled and split into a training and validation set with 20% used for validation.  A test set was not created as the result would be tested using the simulator. 
 
-The model was trained for 8 epochs.
+The model was trained for 7 epochs.
 
-Using the model described here, the training loss was approximately 0.009 and the validation was approximately 0.01. From the following chart it appears that training for 6 epochs could achieve a desirable result.
+Using the model described here, the training loss was approximately 0.016 and the validation was approximately 0.022. 
 
-![Loss and Validation Chart](writeup_images/mse_per_epoch-3.png)
+![Loss and Validation Chart](writeup_images/mse_per_epoch-5.png)
 
 ## Simulator Results
 
