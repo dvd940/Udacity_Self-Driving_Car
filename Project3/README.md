@@ -124,6 +124,7 @@ There are a number of steps that could be taken in the future to enhance the mod
 * The NVIDIA paper talks about converting the images to the YUV color space. Other color spaces including monochrome could also be experimented with.
 * Image processing such a Gaussian blur could be added to reduce noise. 
 * The NVIDIA paper mentions adding random artificial image shifts and rotations to the data to help recovery from poor positions or orientation. 
+* The data is biased towards driving straight with a steering angle of zero. The data could be made more uniform by removing some of the zero angle samples.
 
 
 ## Project Code
