@@ -10,7 +10,7 @@ The objective of this project was to use deep learning to clone driving behavior
 
 The first stage of the project involved collecting data that would be used to train a neural network. 
 
-A driving simulator was provided where a simulated car was able to drive around a test track. In training mode, an image was recorded from 3 positions at the front of the car (left, center and right) in addition to steering, throttle, brake and speed data as the simulated car traversed around a test track. The steering data was the variable that needed to be predicted when running in autonomous mode. 
+A driving simulator was provided where a simulated car was able to drive around a test track. In training mode, an image was recorded from 3 positions at the front of the car (left, center and right) in addition to steering, throttle, brake and speed data as the simulated car traversed around the track. The steering data was the variable that needed to be predicted when running in autonomous mode. 
 
 Examples of these collected images are shown here. 
 
@@ -47,9 +47,9 @@ Next, the data were normalized to give a mean of 0 and a standard deviation of 1
 
 This resulting data were then fed into the neural network. The architecture chosen for this network was the NVIDIA model described in this [blog post](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/) and [paper](https://arxiv.org/pdf/1604.07316v1.pdf).
 
-The following image is from the NVIDA paper:-
+The following image is from the NVIDIA paper:-
 
-![NVIDA Model](writeup_images/cnn-architecture-768x1095.png)
+![NVIDIA Model](writeup_images/cnn-architecture-768x1095.png)
 
 The model used for this project comprises 
 
