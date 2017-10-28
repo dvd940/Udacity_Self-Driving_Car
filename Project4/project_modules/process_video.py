@@ -35,23 +35,27 @@ def draw_lane_image(input_image, binary_img, left_fitx, right_fitx, Minv):
     return result
 
 # Output the lane radius of curvature & center offset onto the image
-def output_curvature_data(input_image, left_curverad, car_position): 
+def output_curvature_data(input_image, left_curverad, car_position, left_line): 
     font = cv2.FONT_HERSHEY_DUPLEX
     font_scale = 1.0
     text_color = (255, 255, 255)
     line_type = 2
 
-    text_left = 'Curvature: {0:.1f} m'.format(round(left_curverad,1))
+    curvature = np.median(left_line.curve_list[-15:]) # Median of last N
+
+    text_left = 'Curvature: {} m'.format(int(curvature))
 
     if car_position < 0:
-        text_center = "Position: {0:.2f} m left of center".format(-round(car_position, 1))
+        text_center = 'Position : {0:.2f} m left of center'.format(-round(car_position, 1))
     else:
-        text_center = "Position: {0:.2f} m right of center".format(-round(car_position, 1))
+        text_center = 'Position : {0:.2f} m right of center'.format(-round(car_position, 1))
 
-    position_left = (40, 80)
-    position_center = (40, 160)
+    position_left = (40, 60)
+    position_center = (40, 90)
 
     output_image = cv2.putText(input_image,text_left, position_left, font, font_scale, text_color, line_type)
     output_image = cv2.putText(output_image,text_center, position_center, font, font_scale, text_color, line_type)
 
     return output_image
+
+
