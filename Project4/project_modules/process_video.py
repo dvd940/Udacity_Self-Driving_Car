@@ -43,12 +43,12 @@ def output_curvature_data(input_image, left_curverad, car_position, left_line):
 
     curvature = np.median(left_line.curve_list[-15:]) # Median of last N
 
-    text_left = 'Curvature: {} m'.format(int(curvature))
+    text_left = 'Curvature : {} m'.format(int(curvature))
 
-    if car_position < 0:
-        text_center = 'Position : {0:.2f} m left of center'.format(-round(car_position, 1))
+    if car_position < 0.0:
+        text_center = 'Position : {0:.1f} m left of center'.format(round(-car_position, 1))
     else:
-        text_center = 'Position : {0:.2f} m right of center'.format(-round(car_position, 1))
+        text_center = 'Position : {0:.1f} m right of center'.format(round(car_position, 1))
 
     position_left = (40, 60)
     position_center = (40, 90)
