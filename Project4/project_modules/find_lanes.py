@@ -84,20 +84,13 @@ def curvature_measurement(input_image, left_fit, right_fit, left_lane_inds, righ
     ploty = np.linspace(0, input_image.shape[0]-1, input_image.shape[0] )
     y_eval = np.max(ploty)
 
-    # nonzero = input_image.nonzero()    
-    # nonzeroy = np.array(nonzero[0])
-    # nonzerox = np.array(nonzero[1])
-    # leftx = nonzerox[left_lane_inds]
-    # lefty = nonzeroy[left_lane_inds] 
-    # rightx = nonzerox[right_lane_inds]
-    # righty = nonzeroy[right_lane_inds]
-
     leftx= left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
     rightx= right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
 
 
     left_fit_cr = np.polyfit(ploty*ym_per_pix, leftx*xm_per_pix, 2)
     right_fit_cr = np.polyfit(ploty*ym_per_pix, rightx*xm_per_pix, 2)
+
     # Calculate the new radii of curvature
     left_curverad = ((1 + (2*left_fit_cr[0]*y_eval*ym_per_pix + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
     right_curverad = ((1 + (2*right_fit_cr[0]*y_eval*ym_per_pix + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
@@ -105,13 +98,6 @@ def curvature_measurement(input_image, left_fit, right_fit, left_lane_inds, righ
 
     left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
     right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
-
-    # left_fit_cr = np.polyfit(np.array(lefty,dtype=np.float32)*ym_per_pix, np.array(leftx,dtype=np.float32)*xm_per_pix, 2)
-    # right_fit_cr = np.polyfit(np.array(righty,dtype=np.float32)*ym_per_pix, np.array(rightx,dtype=np.float32)*xm_per_pix, 2)
-    
-    # # Calculate the new radii of curvature
-    # left_curverad = ((1 + (2*left_fit_cr[0]*y_eval*ym_per_pix + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
-    # right_curverad = ((1 + (2*right_fit_cr[0]*y_eval*ym_per_pix + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
 
     return left_curverad, right_curverad, left_fitx, right_fitx
 
