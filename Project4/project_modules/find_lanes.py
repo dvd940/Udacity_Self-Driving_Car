@@ -120,7 +120,7 @@ def vehicle_position(input_image, left_fit, right_fit):
 def line_smoothing(lane, fitx, curvature):
    
     lane.recent_xfitted.append(fitx)
-    smoothing_factor = 15
+    smoothing_factor = 10
     if len(lane.recent_xfitted) > smoothing_factor:
         lane.recent_xfitted.pop(0)
 

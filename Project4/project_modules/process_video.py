@@ -41,7 +41,9 @@ def output_curvature_data(input_image, left_curverad, car_position, left_line):
     text_color = (255, 255, 255)
     line_type = 2
 
-    curvature = np.median(left_line.curve_list[-15:]) # Median of last N
+    # Median of last N
+    left_line.curve_list = left_line.curve_list[-5:]
+    curvature = np.median(left_line.curve_list) 
 
     text_left = 'Curvature : {} m'.format(int(curvature))
 
