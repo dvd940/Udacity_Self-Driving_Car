@@ -60,7 +60,7 @@ Before extracting features for training the classifier, I determined which color
 
 The accuracies can be seen in this box plot chart:-
 
-![Box plot of accuracy per color space](output_images\color_space_selection.png)
+![Box plot of accuracy per color space](output_images/color_space_selection.png)
 
 Based on this test, I chose the YCrCb color space for the rest of the project.
 
@@ -75,8 +75,8 @@ The final feature vector was created from spatial binning of each image combined
 
 Here are examples of HOG features for car and non-car images for each of 3 channels in the YCrCb color space.
 
-![Car HOG](output_images\hog_car.png)
-![Non-car HOG](output_images\hog_notcar.png)
+![Car HOG](output_images/hog_car.png)
+![Non-car HOG](output_images/hog_notcar.png)
 
 
 
@@ -87,11 +87,11 @@ Here are examples of HOG features for car and non-car images for each of 3 chann
 
 To determine the HOG parameter values, I ran an SVM classifier on the train data stepping through various parameter values and observed the results.
 
-![Box plot of accuracy per color space](output_images\pixel_per_cell_selection.png)
+![Box plot of accuracy per color space](output_images/pixel_per_cell_selection.png)
 
-![Box plot of accuracy per color space](output_images\orient_selection.png)
+![Box plot of accuracy per color space](output_images/orient_selection.png)
 
-![Box plot of accuracy per color space](output_images\cells_per_block_selection.png)
+![Box plot of accuracy per color space](output_images/cells_per_block_selection.png)
 
 The code for each of these charts can be seen in the script **Project 5 - Compare Parameters.ipynb**
 
@@ -131,7 +131,7 @@ The parameter cells_per_step was left at 2 (per the class implementation) which 
 
 See cell 12 of **Project 5 - Vehicle Detection and Tracking.ipynb** for where each of these scales is chosen and passed to the `find_cars()` function.
 
-![Overlapping windows](output_images\overlapping.png)
+![Overlapping windows](output_images/overlapping.png)
 
 
 
@@ -140,23 +140,23 @@ See cell 12 of **Project 5 - Vehicle Detection and Tracking.ipynb** for where ea
 Here are some examples of the output from the image classifier pipeline.
 
 
-![Detect boxes](output_images\multiwindow1.png)
+![Detect boxes](output_images/multiwindow1.png)
 
-![Detect boxes](output_images\multiwindow5.png)
+![Detect boxes](output_images/multiwindow5.png)
 
 
 In order to optimize the performance of the classifier, heat maps were created of the overlapping windows. Shown here are the heat map images of the two images above.
 
-![heat maps](output_images\hpipeline1.png)
+![heat maps](output_images/hpipeline1.png)
 
-![heat maps](output_images\hpipeline5.png)
+![heat maps](output_images/hpipeline5.png)
 
 
 Then, using the `label()` function from scipy, the heat maps could be attributed to specific detected cars. A box was then drawn around those detected cars. 
 
-![Labeled](output_images\pipeline1.png)
+![Labeled](output_images/pipeline1.png)
 
-![Labeled](output_images\pipeline5.png)
+![Labeled](output_images/pipeline5.png)
 
 The code for this part of the pipeline is in the `image_process()` function in cell 12 of **Project 5 - Vehicle Detection and Tracking.ipynb**
 
