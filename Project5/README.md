@@ -113,7 +113,7 @@ To train the classifier, I first created an array of all labeled car and non car
 
 I then randomly split the data into train and test sets.
 
-The classifier chosen was a linear Support Vector Machine based on advise provided in the class. (cell 11 in **Project 5 - Train Classifier.ipynb**)
+The classifier chosen was a linear Support Vector Machine based on advice provided in the class. (cell 11 in **Project 5 - Train Classifier.ipynb**)
 
 This classifier produced an accuracy of 0.989 on the test set.
 
